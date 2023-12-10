@@ -1,32 +1,26 @@
 <template>
   <div>
-    <input type="checkbox" :id="props.label" v-model="isChecked" @input="$emit('update:isChecked', isChecked)">
-    <label :for="props.label" :class="{ checked: isChecked }">{{ props.label }}</label>
+    <input type="checkbox" :id="item.label" v-model="item.isChecked" />
+    <label :for="item.label" :class="{ checked: item.isChecked }">{{ item.label }}</label>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 
+// setup
 export type ListItemProperties = {
   label: string
   isChecked: boolean
 }
 
-defineEmits(['update:isChecked'])
-
+// props
 const props = withDefaults(defineProps<{
-  label: string,
-  isChecked: boolean // changes must be emitted to parent
-}>(), {
-  isChecked: false as boolean
-})
+  item: ListItemProperties
+}>(), {})
 
-/*  since cannot modify props, need this ref to read if item checked or not. 
-    will not modify props.isChecked. must emit change up to parent. */
-const isChecked = ref(props.isChecked) 
-
-// const item = ref(props.item)
+// data
+const item = ref(props.item) // reactive version of props.item
 </script>
 
 <style lang="scss" scoped>
