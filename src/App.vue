@@ -1,14 +1,16 @@
 <template>
-  <h1>TODO with VUE</h1>
-  <input type="text" placeholder="What do you got?" id="inputItem" v-model="inputItem" @keyup.enter="addItemToList" />
+  <h1>TODO with Vue</h1>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="What do you gotta do?" id="inputItem" v-model="inputItem" @keyup.enter="addItemToList" />
+    <button type="button" class="btn btn-outline-primary" @click="addItemToList">Add Task</button>
+  </div>
   <ListCard class="list-card" title="Today" v-model:items="todaysList" />
   <div v-if="errorMessage">{{ errorMessage }}</div>
-  <button @click="clearList">Clear Today's List</button>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import ListCard from './components/ListCard.vue';
-import { type ListItemProperties } from './components/ListItem.vue';
+import { computed, ref } from 'vue'
+import ListCard from './components/ListCard.vue'
+import { type ListItemProperties } from './components/ListItem.vue'
 
 // data
 const inputItem = ref('' as string)
@@ -38,14 +40,6 @@ function addItemToList() {
     inputItem.value = '' // clear input
   }
 }
-
-function clearList() {
-  todaysList.value.splice(0, todaysList.value.length)
-}
 </script>
 <style lang="scss" scoped>
-/* adds margin-top to list-cards which have a list-card before it (so on all except first list-card) */
-.list-card+.list-card {
-  margin-top: 1rem;
-}
 </style>

@@ -1,14 +1,17 @@
 <template>
-  <div class="card">
-    <h1>{{ props.title }}</h1>
-    <h2>{{ totalItemsDescription }}</h2>
-    <ListItem v-for="item in props.items" :key="item.label" :item="item" />
+  <div class="card p-4">
+    <div class="card-body">
+      <h2 class="card-title">{{ props.title }}</h2>
+      <h5 class="card-text mb-4 text-body-tertiary">{{ totalItemsDescription }}</h5>
+      <ListItem v-for="item in items" :key="item.label" :item="item" />
+    </div>
+    <button type="button" class="btn btn-danger mt-3" @click="clearList">Clear Today's List</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import ListItem, { type ListItemProperties } from './ListItem.vue';
+import { computed, ref } from 'vue'
+import ListItem, { type ListItemProperties } from './ListItem.vue'
 
 // props
 const props = withDefaults(defineProps<{
@@ -16,19 +19,22 @@ const props = withDefaults(defineProps<{
   items: ListItemProperties[]
 }>(), {})
 
+// data
+const items = ref(props.items)
+
 // computed properties
-const totalNotChecked = computed(() => props.items.filter(i => !i.isChecked).length)
+const totalNotChecked = computed(() => items.value.filter(i => !i.isChecked).length)
 const totalItemsDescription = computed(() => {
-  const itemText = totalNotChecked.value === 1 ? 'item' : 'items';
+  const itemText = totalNotChecked.value === 1 ? 'task' : 'tasks'
   return totalNotChecked.value === 0
     ? 'Look how productive you were today!'
-    : `${totalNotChecked.value} ${itemText}`;
+    : `You have ${totalNotChecked.value} ${itemText} on your list.`
 })
+
+// methods
+function clearList() {
+  items.value.splice(0, items.value.length)
+}
 </script>
 <style lang="scss" scoped>
-.card {
-  border: 2px solid black;
-  border-radius: 1rem;
-  padding: 2rem;
-}
 </style>

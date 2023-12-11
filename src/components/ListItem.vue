@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <input type="checkbox" :id="item.label" v-model="item.isChecked" />
-    <label :for="item.label" :class="{ checked: item.isChecked }">{{ item.label }}</label>
-  </div>
+  <ul class="list-group">
+    <li class="list-group-item border-0 py-1">
+      <input class="form-check-input me-1" type="checkbox" :id="item.label" v-model="item.isChecked" />
+      <label class="form-check-label" :for="item.label" :class="{ checked: item.isChecked }">{{ item.label }}</label>
+    </li>
+  </ul>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 // setup
 export type ListItemProperties = {
@@ -25,10 +27,10 @@ const item = ref(props.item) // reactive version of props.item
 
 <style lang="scss" scoped>
 label {
-  margin-left: 1rem;
+  margin-left: 1rem
 }
 
 .checked {
-  text-decoration: line-through;
+  text-decoration: line-through
 }
 </style>
