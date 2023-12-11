@@ -5,7 +5,7 @@
       <h5 class="card-text mb-4 text-body-tertiary">{{ totalItemsDescription }}</h5>
       <ListItem v-for="item in items" :key="item.label" :item="item" />
     </div>
-    <button type="button" class="btn btn-danger mt-3" @click="clearList">Clear Today's List</button>
+    <button type="button" class="btn btn-danger mt-3" :class="{ disabled: items.length === 0 }" @click="clearList">Clear Today's List</button>
   </div>
 </template>
 
@@ -25,9 +25,13 @@ const items = ref(props.items)
 // computed properties
 const totalNotChecked = computed(() => items.value.filter(i => !i.isChecked).length)
 const totalItemsDescription = computed(() => {
+  if (items.value.length === 0) {
+    return 'Add some tasks to your list.'
+  }
+
   const itemText = totalNotChecked.value === 1 ? 'task' : 'tasks'
   return totalNotChecked.value === 0
-    ? 'Look how productive you were today!'
+    ? 'You were very productive today!'
     : `You have ${totalNotChecked.value} ${itemText} on your list.`
 })
 

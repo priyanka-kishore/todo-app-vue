@@ -1,7 +1,8 @@
 <template>
   <h1>TODO with Vue</h1>
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="What do you gotta do?" id="inputItem" v-model="inputItem" @keyup.enter="addItemToList" />
+    <input type="text" class="form-control" placeholder="What do you gotta do?" id="inputItem" v-model="inputItem"
+      @keyup.enter="addItemToList" />
     <button type="button" class="btn btn-outline-primary" @click="addItemToList">Add Task</button>
   </div>
   <ListCard class="list-card" title="Today" v-model:items="todaysList" />
@@ -23,8 +24,8 @@ const todaysList = ref([
 
 // computed properties
 const errorMessage = computed(() => {
-  if (inputItem.value !== '' && todaysList.value.some(i => i.label === inputItem.value)) {
-    return 'You already added this item!'
+  if (inputItem.value !== '' && todaysList.value.some(i => i.label.toLocaleLowerCase() === inputItem.value.toLocaleLowerCase())) {
+    return 'You\'ve already added this item!'
   }
   return ''
 })
@@ -41,5 +42,4 @@ function addItemToList() {
   }
 }
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
