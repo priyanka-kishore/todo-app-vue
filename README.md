@@ -1,46 +1,71 @@
-# todo-app-vue
+# ✅ todo-app-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple "to-do list for the day" application with extremely basic functionality, built with Vite + Pinia + Vue 3, TypeScript, and Bootstrap.
 
-## Recommended IDE Setup
+A user is able to:
+- Add a unique task item to the list
+- Check off task items from the list
+- Remove all task items from the list
+- View persisted tasks in list after page refresh (in progress...) 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 🎯 Goals
 
-## Type Support for `.vue` Imports in TS
+- Implement and understand Vue concepts (e.g. form input binding, data reactivity)
+- Design components based on functionality and reusability (e.g. `ListItem.vue` vs `ListCard.vue`)
+- Introduce and implement concepts of state management using Pinia
+- Learn how to install and use Bootstrap
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## 📸 Project Screenshots
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+[ SCREEN SHOT 1 ]
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+[ SCREEN SHOT 2 ]
 
-## Customize configuration
+[ SCREEN SHOT 3 ]
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 🛠️ Local Project Setup
 
-## Project Setup
+To run this project locally, clone/download this repo and install `npm` on your machine.
 
+#### 🔨 Install dependencies listed in `package.json`:
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+#### 🔨 Compile and Hot-Reload for Development:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+#### 🔨 Type-Check, Compile and Minify for Production:
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+#### 🔨 Lint with [ESLint](https://eslint.org/):
 
 ```sh
 npm run lint
 ```
+
+
+## 🌱 Reflection
+
+- What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
+- What did you set out to build?
+- Why was this project challenging and therefore a really good learning experience?
+- What were some unexpected obstacles?
+- What tools did you use to implement this project?
+    - This might seem obvious because you are IN this codebase, but to all other humans now is the time to talk about why you chose webpack instead of create react app, or D3, or vanilla JS instead of a framework etc. Brag about your choices and justify them here.  
+
+#### Not My Example:  
+
+This was a 3 week long project built during my third module at Turing School of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
+
+Originally I wanted to build an application that allowed users to pull data from the Twitter API based on what they were interested in, such as 'most tagged users'. I started this process by using the `create-react-app` boilerplate, then adding `react-router-4.0` and `redux`.  
+
+One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
+
+At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a `webpack.config.js` file to more fully understand the build process.
