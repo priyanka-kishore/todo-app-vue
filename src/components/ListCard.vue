@@ -5,7 +5,7 @@
       <h5 class="card-text mb-4 text-body-tertiary">{{ totalItemsDescription }}</h5>
       <ListItem v-for="item in items" :key="item.label" :item="item" />
     </div>
-    <button type="button" class="btn btn-danger mt-3" :class="{ disabled: items.length === 0 }" @click="clearList">Clear Today's List</button>
+    <button type="button" class="btn btn-danger mt-3" :class="{ disabled: items.length === 0 }" @click="clearList">Clear {{ props.title }}'s List</button>
   </div>
 </template>
 

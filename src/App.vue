@@ -9,18 +9,13 @@
   <div v-if="errorMessage">{{ errorMessage }}</div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import ListCard from './components/ListCard.vue'
-import { type ListItemProperties } from './components/ListItem.vue'
+import { computed, onBeforeMount, ref, watch } from 'vue';
+import ListCard from './components/ListCard.vue';
+import { type ListItemProperties } from './components/ListItem.vue';
 
 // data
 const inputItem = ref('' as string)
-const todaysList = ref([
-  { label: 'Walk Theo', isChecked: false },
-  { label: 'Go to gym', isChecked: false },
-  { label: 'Push code to branch', isChecked: false },
-  { label: 'Fix bug', isChecked: false }
-] as ListItemProperties[])
+const todaysList = ref([] as ListItemProperties[])
 
 // computed properties
 const errorMessage = computed(() => {
@@ -29,6 +24,19 @@ const errorMessage = computed(() => {
   }
   return ''
 })
+
+// lifecycle
+onBeforeMount(() => {
+  const storedList = localStorage.getItem('list')
+  const parsedList = storedList ? JSON.parse(storedList) : []
+
+  todaysList.value.splice(0, todaysList.value.length, ...parsedList)
+})
+
+// watchers
+watch(todaysList.value, (updatedTodaysList) => {
+  localStorage.setItem('list', JSON.stringify(updatedTodaysList as ListItemProperties[]))
+}, { deep: true })
 
 // methods
 function addItemToList() {
