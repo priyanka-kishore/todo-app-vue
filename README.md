@@ -1,27 +1,27 @@
 # ✅ todo-app-vue
 
-A simple "to-do list for the day" application with extremely basic functionality, built with Vite + Pinia + Vue 3, TypeScript, and Bootstrap.
+A simple "to-do list for the day" application with extremely basic functionality, built with Vite + Vue 3, TypeScript, and Bootstrap.
 
 A user is able to:
 - Add a unique task item to the list
 - Check off task items from the list
 - Remove all task items from the list
-- View persisted tasks in list after page refresh (in progress...) 
+- View persisted tasks in list after page refresh
 
 ## 🎯 Goals
 
 - Implement and understand Vue concepts (e.g. form input binding, data reactivity)
 - Design components based on functionality and reusability (e.g. `ListItem.vue` vs `ListCard.vue`)
-- Introduce and implement concepts of state management using Pinia
+- Introduce and implement concepts of local storage
 - Learn how to install and use Bootstrap
 
 ## 📸 Project Screenshots
 
-[ SCREEN SHOT 1 ]
-
-[ SCREEN SHOT 2 ]
-
-[ SCREEN SHOT 3 ]
+![TODO-Built-with-Vue_New-Tasks](https://github.com/priyanka-kishore/todo-app-vue/assets/33528287/6d1056c3-fa4e-4f72-b72d-dfcb3bbafc65)
+![TODO-Built-with-Vue_Some-Checked](https://github.com/priyanka-kishore/todo-app-vue/assets/33528287/e27e07f9-ec94-41f2-8a8f-73f6376c6f12)
+![TODO-Built-with-Vue_All-Checked](https://github.com/priyanka-kishore/todo-app-vue/assets/33528287/72709ebb-1ec9-44ac-9709-860ad07225c1)
+![TODO-Built-with-Vue_Duplicate-Task](https://github.com/priyanka-kishore/todo-app-vue/assets/33528287/7dc3101c-97c1-40a0-b232-35b2f8b94ed5)
+![TODO-Built-with-Vue_No-Tasks](https://github.com/priyanka-kishore/todo-app-vue/assets/33528287/288811bb-753d-4236-a577-b3afe67d61d4)
 
 ## 🛠️ Local Project Setup
 
@@ -50,22 +50,20 @@ npm run build
 npm run lint
 ```
 
-
 ## 🌱 Reflection
 
-- What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
+- What was the context for this project?
 - What did you set out to build?
 - Why was this project challenging and therefore a really good learning experience?
 - What were some unexpected obstacles?
 - What tools did you use to implement this project?
-    - This might seem obvious because you are IN this codebase, but to all other humans now is the time to talk about why you chose webpack instead of create react app, or D3, or vanilla JS instead of a framework etc. Brag about your choices and justify them here.  
 
-#### Not My Example:  
+This was a week long project built after my full-time work hours at my front end developer job. The goal for creating and completing this project was to apply the frontend skills I learned on the job (after previously working as a Java backend developer) to a fairly easy side project.
 
-This was a 3 week long project built during my third module at Turing School of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
+I set out to build a relatively simply to-do list application that has the most basic functionalities of adding a task to a list, checking off tasks on that list, and removing all tasks at once from the list.
 
-Originally I wanted to build an application that allowed users to pull data from the Twitter API based on what they were interested in, such as 'most tagged users'. I started this process by using the `create-react-app` boilerplate, then adding `react-router-4.0` and `redux`.  
+The beginning of this project was challenging when figuring out which build tools to use to stand up a basic scaffolding of the project. I ended up using Vite since that is what the frontend teams use at my job. Another challenge was deciding how I wanted to break down the reusable components to prevent redundancy. I had to design how and which data was sent between components as well as creating types to enforce type-safety.
 
-One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
+Some unexpected obstacles were figuring out how to pass data between child and parent components so that the to-do list item data was kept synchronized. At first, I used `props` and `emit`, but quickly realized using two-way binding with `v-model` would be a better way. Also, another obstacle was ensuring reactivity when the list would change with more or checked off items. I had to make sure that the original list was not replaced, but rather `spliced` from or `pushed` to in order to maintain reactivity.
 
-At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a `webpack.config.js` file to more fully understand the build process.
+I decided to use the Vue JS framework as this was my first frontend JS framework I ever used thanks to work. I plan to recreate the project in React JS as well to learn the basics. I used TypeScript instead of JavaScript to enforce typing, and Bootstrap to learn how to install and use a third-party styling and component library, instead of sticking with plain CSS/SCSS like I use at work. I also used Vite to bundle everything and build the project for development and production.
