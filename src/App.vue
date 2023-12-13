@@ -3,10 +3,12 @@
   <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="What do you gotta do?" id="inputItem" v-model="inputItem"
       @keyup.enter="addItemToList" />
-    <button type="button" class="btn btn-outline-primary" @click="addItemToList">Add Task</button>
+    <button type="button" class="btn btn-outline-primary" @click="addItemToList" :class="{ disabled : errorMessage }">Add Task</button>
+  </div>
+  <div class="alert alert-danger" role="alert" v-if="errorMessage">
+    {{ errorMessage }}
   </div>
   <ListCard class="list-card" title="Today" v-model:items="todaysList" />
-  <div v-if="errorMessage">{{ errorMessage }}</div>
 </template>
 <script setup lang="ts">
 import { computed, onBeforeMount, ref, watch } from 'vue';
